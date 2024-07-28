@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Upcoming Events</title>
+    <h:outputStylesheet library="css" name="event.css"/>
+    <h:outputStylesheet name="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+</h:head>
+<h:body>
+    <ui:include src="navbar.xhtml"/>
+    <h:form>
+        <div class="page-event">
+            <div class="cover">
+                <div class="heading">Events</div>
+            </div>
+            <div class="container">
+                <div class="upcoming-sec">
+                    <div class="heading">Upcoming Events</div>
+                </div>
+                <div class="upcoming-event-list">
+                    <ui:repeat value="#{eventbean.eventlist}" var="event">
+                        <div class="event-block">
+                            <div class="event-content">
+                                <div class="event-image">
+                                    <img src="#{eventbean.getImageBase64(event)}" alt="Event Image"/>
+                                </div>
+                                <div class="event-details">
+                                    <div class="title">#{event.name}</div>
+                                    <div class="venue">
+                                        <table>
+                                            <tr>
+                                                <td><i class="fa fa-map-marker"></i></td>
+                                                <td>
+                                                    <div class="dim-color">
+                                                        <a href="#{event.description}" target="_blank">Get Directions</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="time">
+                                        <table>
+                                            <tr>
+                                                <td><i class="fa fa-clock-o"></i></td>
+                                                <td>
+                                                    <div>#{event.date}</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="description">
+                                        <div>#{event.description}</div>
+                                    </div>
+                                    <div class="group-of-btn">
+                                        <div class="form-group">
+                                            <!-- Render Register button if student is logged in, else Login button -->
+                                            <h:panelGroup rendered="#{studentbean.isStudentLoggedIn()}">
+                                                <h:panelGroup rendered="#{!enrolmentbean.isEnrolled(event.id)}">
+                                                    <h:commandButton value="Register" 
+                                                                     action="#{enrolmentbean.add(event.id)}" 
+                                                                     class="btn btn-primary" />
+                                                </h:panelGroup>
+                                                <h:panelGroup rendered="#{enrolmentbean.isEnrolled(event.id)}">
+                                                    <h:outputText value="Registered" 
+                                                                  styleClass="btn btn-secondary" />
+                                                </h:panelGroup>
+                                                </h:panelGroup>
+                                            <h:panelGroup rendered="#{!studentbean.isStudentLoggedIn()}">
+                                                <h:commandButton value="Login" 
+                                                                 action="#{studentbean.login}" 
+                                                                 class="btn btn-primary" />
+                                            </h:panelGroup>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ui:repeat>
+                </div>
+            </div>
+        </div>
+        <p:growl id="growl" showDetail="true" />
+    </h:form>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</h:body>
+</html>

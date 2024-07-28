@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition template="/layout.xhtml">
+    <ui:define name="title">Faculty Registration</ui:define>
+    <ui:define name="content">
+        <section class="section">
+            <div class="section-overlay">
+                <div class="form-container">
+                    <h3>Faculty Updation</h3>
+                    <h:form>
+                        <h:messages globalOnly="true" style="color: red; margin-bottom: 20px;" />
+                        
+                        <div class="form-group">
+                            <label for="id">Enter Id</label>
+                            <h:inputText id="id" required="true" requiredMessage="ID is mandatory"
+                                         value="#{facultybean.id}" validatorMessage="ID must be exactly 4 characters long">
+                                <f:validateLength minimum="4" maximum="4" />
+                            </h:inputText>
+                            <h:message for="id" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <h:inputText id="name" required="true" requiredMessage="Name is mandatory" value="#{facultybean.name}" />
+                            <h:message for="name" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">Enter Gender</label>
+                            <h:selectOneRadio id="gender" required="true" requiredMessage="Gender is mandatory" value="#{facultybean.gender}">
+                                <f:selectItem itemLabel="Male" itemValue="Male" />
+                                <f:selectItem itemLabel="Female" itemValue="Female" />
+                                <f:selectItem itemLabel="Others" itemValue="Others" />
+                            </h:selectOneRadio>
+                            <h:message for="gender" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">Enter Department</label>
+                            <h:selectOneMenu id="department" required="true" requiredMessage="Department is mandatory" value="#{facultybean.department}">
+                                <f:selectItem itemLabel="--Select--" itemValue="" />
+                                <f:selectItem itemLabel="CSE" itemValue="CSE" />
+                                <f:selectItem itemLabel="ECE" itemValue="ECE" />
+                                <f:selectItem itemLabel="EEE" itemValue="EEE" />
+                                <f:selectItem itemLabel="MECH" itemValue="MECH" />
+                            </h:selectOneMenu>
+                            <h:message for="department" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Enter Email</label>
+                            <h:inputText id="email" required="true" requiredMessage="Email is mandatory" value="#{facultybean.email}" validatorMessage="Invalid email format">
+                                <f:validateRegex pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$" />
+                            </h:inputText>
+                            <h:message for="email" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Enter Password</label>
+                            <h:inputSecret id="password" required="true" requiredMessage="Password is mandatory" value="#{facultybean.password}" validatorMessage="Password must be at least 6 characters">
+                                <f:validateLength minimum="6" />
+                            </h:inputSecret>
+                            <h:message for="password" />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="salary">Enter Salary</label>
+                            <h:inputText id="salary" required="true" requiredMessage="Salary is mandatory" value="#{facultybean.salary}" />
+                            <h:message for="salary" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact">Enter Contact</label>
+                            <h:inputText id="contact" required="true" requiredMessage="Contact is mandatory" value="#{facultybean.contact}">
+                                <f:validateLength maximum="10" />
+                                <f:validateRegex pattern="^[0-9]{10}$" />
+                            </h:inputText>
+                            <h:message for="contact" />
+                        </div>
+
+                        <div class="form-group">
+                            <h:commandButton value="Update" action="#{facultybean.update()}" class="btn btn-primary" />
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>
+</html>

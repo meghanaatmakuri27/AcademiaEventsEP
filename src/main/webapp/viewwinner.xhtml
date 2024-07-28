@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>View All Winners</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .container h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #343a40;
+            text-decoration: underline;
+        }
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+        td {
+            background-color: #ffffff;
+        }
+        .action-links {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+        .btn {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            padding: 5px 10px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #bd2130;
+        }
+        .event-image {
+            max-width: 100px;
+            height: auto;
+            border-radius: 4px;
+        }
+    </style>
+</h:head>
+
+<body>
+    <ui:include src="navbar.xhtml"/>
+    <div class="container">
+        <h3>View All Winners</h3>
+        <p style="text-align: center;">Total Winners: #{winnerbean.winnerslist.size()}</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Winner Name</th>
+                        <th>Certificate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ui:repeat value="#{winnerbean.winnerslist}" var="winner">
+                        <tr>
+                            <td>#{winner.eventname}</td>
+                            <td>#{winner.name}</td>
+                            <td>
+                                <h:graphicImage value="#{winnerbean.getImageBase64(winner)}" styleClass="event-image" />
+                                <div class="action-links">
+                                    <h:form>
+                                        <h:commandButton value="Download" action="#{winnerbean.downloadImage(winner.id)}" styleClass="btn btn-primary" />
+                                    </h:form>
+                                </div>
+                            </td>
+                        </tr>
+                    </ui:repeat>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

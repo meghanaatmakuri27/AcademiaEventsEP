@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>Admin Dashboard</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Arial', sans-serif;
+        }
+        .sidebar {
+            background-color: #343a40;
+            position: fixed;
+            height: 100%;
+            width: 240px;
+            transition: all 0.3s;
+        }
+        .sidebar .nav-link {
+            color: #adb5bd;
+            margin: 15px 0;
+            transition: color 0.2s;
+        }
+        .sidebar .nav-link:hover {
+            color: #ffffff;
+        }
+        .sidebar .nav-link .fas {
+            margin-right: 10px;
+        }
+        .sidebar .dropdown-toggle::after {
+            display: none;
+        }
+        .content {
+            margin-left: 260px;
+            padding: 30px;
+        }
+        .card {
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .card-body {
+            background-color: #ffffff;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .dropdown-menu {
+            background-color: #343a40;
+            border-radius: 0.5rem;
+        }
+        .dropdown-menu .dropdown-item {
+            color: #adb5bd;
+            transition: color 0.2s, background-color 0.2s;
+        }
+        .dropdown-menu .dropdown-item:hover {
+            color: #ffffff;
+            background-color: #007bff;
+        }
+        .navbar-custom {
+            background-color: #007bff;
+            padding: 1rem;
+        }
+        .navbar-custom .navbar-brand, .navbar-custom .navbar-nav .nav-link {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="d-flex">
+    <div class="sidebar">
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+            <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            </a>
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link align-middle px-0">
+                        <i class="fas fa-home"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                        <i class="fas fa-tachometer-alt"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                    </a>
+                    <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                        <!-- Removed Item 1 and Item 2 -->
+                    </ul>
+                </li>
+                <li>
+                    <a href="addevent.jsf" class="nav-link px-0 align-middle">
+                        <i class="fas fa-table"></i> <span class="ms-1 d-none d-sm-inline">Add Events</span></a>
+                </li>
+                <li>
+                    <a href="viewevent.jsf" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                        <i class="fas fa-layer-group"></i> <span class="ms-1 d-none d-sm-inline"> My Events</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                        <i class="fas fa-box-open"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
+                    </a>
+                    <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                        <li class="w-100">
+                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product 1</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product 2</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product 3</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product 4</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-users"></i> <span class="ms-1 d-none d-sm-inline">Students</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <li><a class="dropdown-item" href="studentadd.jsf">Add Student</a></li>
+        <li><a class="dropdown-item" href="studentview.jsf">View Students</a></li>
+    </ul>
+</li>
+                
+                <li>
+                    <a href="#" class="nav-link px-0 align-middle">
+                        <i class="fas fa-users"></i> <span class="ms-1 d-none d-sm-inline">Faculty</span> </a>
+                </li>
+            </ul>
+            <hr class="dropdown-divider" />
+            <div class="dropdown pb-4">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle"></img>
+                    <span class="d-none d-sm-inline mx-1">Username</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

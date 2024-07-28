@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beautiful Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <style type="text/css">
+        .navbar {
+            background-color: #ffffff; /* White background */
+            border-bottom: 2px solid #000000; /* Black border at the bottom */
+            padding: 0.5rem; /* Increased padding for overall height and width */
+        }
+        .navbar-brand {
+            color: #000000 !important; /* Black text */
+            font-weight: bold;
+            font-size: 2em; /* Increase font size */
+        }
+        .nav-link {
+            color: #000000 !important; /* Black text */
+            font-size: 1.2em; /* Increase font size */
+            margin: 0 20px; /* Increase margin for spacing */
+        }
+        .nav-link:hover, .nav-link.active {
+            background-color: #f8f9fa; /* Light background on hover */
+            color: #000000 !important; /* Black text on hover */
+            border-radius: 5px;
+        }
+        .dropdown-menu {
+            background-color: #ffffff; /* White background */
+            border: 1px solid #000000; /* Black border */
+        }
+        .dropdown-item {
+            color: #000000 !important; /* Black text */
+            font-size: 1.2em; /* Increase font size */
+        }
+        .dropdown-item:hover {
+            background-color: #f8f9fa; /* Light background on hover */
+            color: #000000 !important; /* Black text on hover */
+        }
+        .navbar-toggler {
+            border-color: #000000; /* Black border */
+        }
+        .navbar-toggler-icon {
+            filter: invert(0); /* Normal color for the icon to be visible on white background */
+        }
+        .navbar-nav {
+            margin: 0 auto; /* Center the navbar items */
+        }
+        .nav-item {
+            margin-left: 15px; /* Increase margin for spacing */
+        }
+    </style>
+</head>
+<body>
+    <h:form>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+            <img src="resources/academia5.jpg" height="50px" width="50px"/>
+                <a class="navbar-brand" href="#">AcademiaEvents</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="home.jsf">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="events.jsf">Events</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="aboutus.jsf">About Us</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                More
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="contactus.jsf">Contact</a></li>
+                                <li><a class="dropdown-item" href="FAQ.jsf">FAQ</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="viewwinner.jsf">Winners</a>
+                        </li>
+                        <h:panelGroup rendered="#{not studentbean.isStudentLoggedIn()}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.jsf">Login</a>
+                            </li>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{studentbean.isStudentLoggedIn()}">
+                        <li class="nav-item">
+                        <a href="profile.jsp" class="profile-icon">
+                <img src="resources/profle.jpg" height="50px" width="50px" alt="Profile" />
+            </a>
+             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="studentlogout.jsp">Logout</a>
+                            </li>
+                        </h:panelGroup>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </h:form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

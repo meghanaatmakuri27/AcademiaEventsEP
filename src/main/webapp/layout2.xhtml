@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title><ui:insert name="title">Faculty Dashboard</ui:insert></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            color: white;
+            padding-top: 20px;
+            transition: width 0.3s;
+        }
+        .sidebar h2 {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        .sidebar a {
+            padding: 20px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: background-color 0.3s, padding-left 0.3s;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+        .sidebar i {
+            margin-right: 10px;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: margin-left 0.3s;
+        }
+        .navbar {
+            background-color: #343a40;
+            color: white;
+            margin-bottom: 50px;
+        }
+        .navbar a {
+            color: white;
+        }
+        .card {
+            background-color: #343a40;
+            color: white;
+            border: none;
+            margin-bottom: 20px;
+        }
+        .card-title {
+            color: #ffc107;
+        }
+        .card-header {
+            background-color: #495057;
+            border-bottom: 1px solid #343a40;
+        }
+        .list-unstyled li {
+            background-color: #495057;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+        .list-unstyled li:hover {
+            background-color: #343a40;
+        }
+        .sidebar-collapsed {
+            width: 80px;
+        }
+        .sidebar-collapsed .sidebar h2 {
+            display: none;
+        }
+        .sidebar-collapsed .sidebar a {
+            padding-left: 10px;
+        }
+        .sidebar-collapsed .sidebar i {
+            display: none;
+        }
+        /* CSS-only Dropdown */
+        .dropdown-container {
+            display: none;
+            background-color: #495057;
+            padding-left: 20px;
+        }
+        .section {
+            padding: 100px 0;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+            min-height: 100vh; /* Ensure section covers viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .section-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .form-group input, .form-group select, .form-group radio {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #343a40;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+        .form-group button:hover {
+            background-color: #555d66;
+        }
+        .form-footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+        .form-footer a {
+            color: #f8f9fa;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <h2>Faculty Dashboard</h2>
+        <a href="layout.jsf"><i class="fas fa-home"></i> Home</a>
+        <a href="adminhome.jsf"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="#" class="dropdown-btn">
+            <i class="fas fa-tasks"></i> Events
+        </a>
+        <div class="dropdown-container">
+            <a href="addevent.jsf">Add Event</a>
+            <a href="viewevent.jsf">View Events</a>
+        </div>
+        <a href="#" class="dropdown-btn">
+            <i class="fas fa-trophy"></i> Winners
+        </a>
+        <div class="dropdown-container">
+            <a href="winner.jsf">Add Winner</a>
+            <a href="viewwinners.jsf">View Winners</a>
+        </div>
+        <a href="enrollmentview.jsf"><i class="fas fa-users"></i> Enrolled Students</a>
+        <a href="index.jsf" style="color: #dc3545;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <button type="button" class="btn btn-dark mt-3" onclick="toggleSidebar()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="main-content">
+        <ui:insert name="content">
+            <!-- Main content will be injected here -->
+        </ui:insert>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var mainContent = document.querySelector(".main-content");
+            if (sidebar.classList.contains("sidebar-collapsed")) {
+                sidebar.classList.remove("sidebar-collapsed");
+                mainContent.style.marginLeft = "250px";
+            } else {
+                sidebar.classList.add("sidebar-collapsed");
+                mainContent.style.marginLeft = "80px";
+            }
+        }
+
+        document.querySelectorAll('.dropdown-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const dropdown = btn.nextElementSibling;
+                dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+            });
+        });
+    </script>
+</body>
+</html>

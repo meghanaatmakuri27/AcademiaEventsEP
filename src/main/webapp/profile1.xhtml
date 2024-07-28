@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Student Profile</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h:panelGroup>
+            <h:commandLink value="Home" action="events"/>
+            <h:commandLink value="Update Profile" action="studentupdate"/>
+            <h:commandLink value="My Profile" action="profile"/>
+            <h:commandLink value="Logout" action="studentlogout"/>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="profile-section">
+            <h2><u>Student Profile</u></h2>
+            <h:outputText value="ID: #{studentbean.id}" /><br/>
+            <h:outputText value="Name: #{studentbean.name}" /><br/>
+            <h:outputText value="Gender: #{studentbean.gender}" /><br/>
+            <h:outputText value="Department: #{studentbean.department}" /><br/>
+            <h:outputText value="Email: #{studentbean.email}" /><br/>
+            <h:outputText value="Contact: #{studentbean.contact}" /><br/><br/>
+
+            <h:panelGroup layout="block" styleClass="events-section">
+                <h2><u>Enrolled Events</u></h2>
+                <h:dataTable value="#{studentbean.enrolledEvents}" var="event">
+                    <h:column>
+                        <f:facet name="header">Event ID</f:facet>
+                        <h:outputText value="#{event.eventid}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Event Name</f:facet>
+                        <h:outputText value="#{event.name}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Event Date</f:facet>
+                        <h:outputText value="#{event.date}" />
+                    </h:column>
+                </h:dataTable>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:form>
+</h:body>
+</html>

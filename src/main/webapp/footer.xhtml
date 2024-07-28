@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Footer Design</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .footer {
+            background: #222;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .footer .social-media a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+        .footer .social-media a:hover {
+            color: #f0f0f0;
+        }
+        .footer .links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer .links li {
+            margin: 5px 0;
+        }
+        .footer .links a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer .links a:hover {
+            text-decoration: underline;
+        }
+        .footer .copy {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Other page content -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="logo">University Event Management System</div>
+            <ul class="links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+            <div class="social-media">
+                <a href="#" aria-label="Facebook">F</a>
+                <a href="#" aria-label="Twitter">T</a>
+                <a href="#" aria-label="Instagram">I</a>
+                <a href="#" aria-label="LinkedIn">L</a>
+            </div>
+        </div>
+        <div class="copy">
+            &#169; 2024 University Event Management System. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>View All Students</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff; /* White background */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+            margin-left: 50px; /* Adjust this value to move the table to the right */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            color: #333; /* Dark text */
+        }
+        th {
+            background-color: #343a40; /* Dark gray background */
+            color: #ffffff; /* White text */
+        }
+        td {
+            background-color: #ffffff; /* White background */
+        }
+        .action-column {
+            min-width: 120px;
+        }
+        .action-links {
+            display: flex;
+            justify-content: space-around;
+        }
+        .action-links a {
+            text-decoration: none;
+            color: #333;
+        }
+        .action-links a:hover {
+            color: #0069d9; /* Blue on hover */
+        }
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #28a745; /* Dark green */
+            border-color: #28a745; /* Dark green */
+        }
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #218838; /* Darker green on hover */
+            border-color: #1e7e34; /* Darker green on hover */
+        }
+        .btn-danger {
+            color: #fff;
+            background-color: #dc3545; /* Red */
+            border-color: #dc3545; /* Red */
+        }
+        .btn-danger:hover {
+            color: #fff;
+            background-color: #c82333; /* Darker red on hover */
+            border-color: #bd2130; /* Darker red on hover */
+        }
+    </style>
+</h:head>
+
+<body>
+<ui:include src="/layout.xhtml"/>
+    <div class="container">
+        <h3 style="text-align: center;"><u>View All Students</u></h3>
+        <p style="text-align: center;">Total Students: #{studentbean.studentlist.size()}</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Department</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th class="action-column">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ui:repeat value="#{studentbean.studentlist}" var="student">
+                        <tr>
+                            <td>#{student.id}</td>
+                            <td>#{student.name}</td>
+                            <td>#{student.gender}</td>
+                            <td>#{student.department}</td>
+                            <td>#{student.email}</td>
+                            <td>#{student.contact}</td>
+                            <td class="action-column">
+                                <div class="action-links">
+                                    <h:form>
+                                        <h:commandLink action="#{studentbean.delete(student.id)}" value="Delete" styleClass="btn btn-danger" />
+                                    </h:form>
+                                    <h:form>
+                                        <h:commandLink action="studentupdate.jsf" value="Update" styleClass="btn btn-primary" />
+                                    </h:form>
+                                </div>
+                            </td>
+                        </tr>
+                    </ui:repeat>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>FAQ Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff; /* White background outside container */
+            color: #000;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto; /* Added margin for spacing */
+            padding: 20px;
+            background: #222; /* Dark background for container */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #fff; /* White text for the header */
+        }
+        .faq {
+            margin-bottom: 20px;
+        }
+        .faq h2 {
+            cursor: pointer;
+            background: #444; /* Slightly lighter dark background for FAQ headers */
+            color: #fff; /* White text for FAQ headers */
+            padding: 10px;
+            border-radius: 4px;
+            margin: 0;
+            font-size: 18px;
+            border: 1px solid #555;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .faq h2::before {
+            content: '+';
+            font-size: 20px;
+            margin-right: 10px;
+            transition: transform 0.3s;
+        }
+        .faq-content {
+            display: none;
+            padding: 10px;
+            border-top: 1px solid #555;
+            background: #333; /* Slightly lighter dark background for FAQ content */
+            color: #fff; /* White text for FAQ content */
+        }
+        .faq-content p {
+            margin: 0;
+        }
+        .faq.active h2::before {
+            content: '-';
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const faqs = document.querySelectorAll('.faq');
+            faqs.forEach(faq => {
+                faq.querySelector('h2').addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const isActive = faq.classList.contains('active');
+                    faqs.forEach(f => f.classList.remove('active'));
+                    faqs.forEach(f => f.querySelector('.faq-content').style.display = 'none');
+                    if (!isActive) {
+                        faq.classList.add('active');
+                        content.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <ui:include src="navbar.xhtml"/>
+    <h:form>
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            
+            <!-- General Questions -->
+            <div class="faq">
+                <h2>What is the University Event Management System?</h2>
+                <div class="faq-content">
+                    <p>The University Event Management System is a platform designed to help manage and organize university events, including event scheduling, registrations, and notifications.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <h2>How do I create an account?</h2>
+                <div class="faq-content">
+                    <p>To create an account, click on the 'Sign Up' button on the home page. Follow the step-by-step instructions, enter your details, and confirm your email address to complete the registration process.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <h2>What should I do if I forget my password?</h2>
+                <div class="faq-content">
+                    <p>If you forget your password, click on the 'Forgot Password' link on the login page. Follow the instructions to reset your password by verifying your email or phone number.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <h2>How do I update my profile information?</h2>
+                <div class="faq-content">
+                    <p>Log in to your account, go to the 'Profile' section, and update your personal details, such as email address and contact information. Be sure to save your changes before exiting.</p>
+                </div>
+            </div>
+            
+            <!-- Event Management -->
+            <div class="faq">
+                <h2>How do I register for an event?</h2>
+                <div class="faq-content">
+                    <p>To register for an event, browse the events list, select the event you are interested in, and click on the 'Register' button. Follow the instructions to complete your registration.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <h2>Can I cancel my registration for an event?</h2>
+                <div class="faq-content">
+                    <p>Yes, you can cancel your registration. Go to your 'Registrations' section, find the event you wish to cancel, and follow the cancellation procedure. Be aware of any cancellation policies that may apply.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <h2>How do I view upcoming events?</h2>
+                <div class="faq-content">
+                    <p>To view upcoming events, navigate to the 'Events' section of the website. You can browse through the list of events sorted by date or category.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <h2>Who can I contact for more information about an event?</h2>
+                <div class="faq-content">
+                    <p>For more information about an event, contact the event organizer directly through the contact details provided on the event page or reach out to our support team.</p>
+                </div>
+            </div>
+            
+            <!-- Role-Based Questions -->
+            <div class="faq">
+                <h2>What are the different user roles and their permissions?</h2>
+                <div class="faq-content">
+                    <p>Roles include Admin (can manage users and events), User (can register and participate in events), and Faculty (can create and manage events). Each role has specific permissions and access rights.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <h2>How do I request a new role or change my current role?</h2>
+                <div class="faq-content">
+                    <p>To request a new role or change your current role, contact the system administrator or use the role request form available in your account settings.</p>
+                </div>
+            </div>
+            
+            <!-- Technical Support -->
+            <div class="faq">
+                <h2>What should I do if I encounter an error or technical issue?</h2>
+                <div class="faq-content">
+                    <p>If you encounter an error or technical issue, try refreshing the page or clearing your browser cache. If the problem persists, report the issue to our technical support team.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <h2>How can I contact support?</h2>
+                <div class="faq-content">
+                    <p>To contact support, use the 'Contact Us' form available on the website or send an email to our support team at support@example.com.</p>
+                </div>
+            </div>
+            
+            <!-- Additional Information -->
+            <div class="faq">
+                <h2>Is there a mobile app for the University Event Management System?</h2>
+                <div class="faq-content">
+                    <p>Currently, there is no dedicated mobile app. However, the system is fully accessible and optimized for mobile browsers.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <h2>How is my personal data protected?</h2>
+                <div class="faq-content">
+                    <p>We take data protection seriously. Personal data is encrypted and securely stored. Our privacy policy outlines how your data is used and protected.</p>
+                </div>
+            </div>
+            
+            <div class="faq">
+                <h2>Can I provide feedback about the system?</h2>
+                <div class="faq-content">
+                    <p>Yes, you can provide feedback by filling out the feedback form available in your account or sending suggestions to feedback@example.com.</p>
+                </div>
+            </div>
+            
+        </div>
+    </h:form>
+</body>
+</html>

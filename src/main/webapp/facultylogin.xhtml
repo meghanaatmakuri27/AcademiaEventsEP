@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        /* Ensure the body takes up full height */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background image styling */
+        .bg-custom {
+          background-image: url('resources/background6.jpg');
+            background-size: cover;
+            background-position: center left; /* Align image to the left */
+            height: 100vh; /* Full viewport height */
+            width: 100%; /* Full viewport width */
+        }
+
+        /* Form container styling */
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            padding: 0;
+            position: relative;
+            z-index: 1; /* Ensure the form container is above the background image */
+        }
+
+        /* Form styling */
+        .login-form {
+            background: #fff; /* White background for the form */
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px; /* Adjust as needed */
+            position: absolute;
+            right: 0; /* Align form to the right */
+            margin-right: 2rem; /* Space from the right edge */
+        }
+
+        .form-outline {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #000; /* Black text color for labels */
+        }
+
+        .form-control {
+            border-radius: 4px;
+            border: 1px solid #ccc; /* Light grey border */
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); /* Inner shadow for depth */
+        }
+
+        .form-control:focus {
+            border-color: #000; /* Black border color on focus */
+            box-shadow: 0 0 5px rgba(0,0,0,0.1); /* Subtle shadow on focus */
+        }
+
+        .btn-primary {
+            background-color: #000; /* Black button background */
+            border-color: #000; /* Black button border */
+            border-radius: 4px; /* Rounded corners */
+        }
+
+        .btn-primary:hover {
+            background-color: #333; /* Slightly lighter on hover */
+            border-color: #333;
+        }
+
+        /* Additional links styling */
+        .additional-links {
+            margin-top: 1.5rem; /* Space above the links */
+            text-align: center;
+        }
+
+        .additional-links a {
+            display: block;
+            color: #007bff; /* Professional blue color for links */
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 1rem; /* Space between links */
+        }
+
+        .additional-links a:hover {
+            color: #0056b3; /* Slightly darker blue on hover */
+        }
+
+        /* Heading styling */
+        .login-heading {
+            text-align: center;
+            margin-bottom: 2rem; /* Space below the heading */
+            color: #000; /* Black text color */
+            font-size: 2rem; /* Adjust font size as needed */
+        }
+    </style>
+</head>
+<body>
+    <h:form>
+        <div class="container-fluid vh-100">
+            <div class="row h-100 no-gap">
+                <div class="col-md-7 col-lg-8 bg-custom d-none d-md-block"></div>
+                <div class="col-md-5 col-lg-4 d-flex align-items-center justify-content-center">
+                    <div class="login-form">
+                        <!-- Heading -->
+                        <div class="login-heading">
+                           Academia Events
+                        </div>
+                        <!-- Email input -->
+                        <div class="form-outline mb-3">
+                            <h:outputLabel for="email" value="Email" class="form-label" />
+                            <h:inputText id="email" value="#{facultybean.email}" required="true"
+                                         class="form-control form-control-lg" />
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-3">
+                            <h:outputLabel for="password" value="Password" class="form-label" />
+                            <h:inputSecret id="password" value="#{ facultybean.password}" required="true"
+                                           class="form-control form-control-lg" />
+                        </div>
+
+                        <!-- Submit button -->
+                        <h:commandButton value="Sign in" action="#{facultybean.login()}"
+                                         styleClass="btn btn-primary btn-lg btn-block" />
+
+                        <!-- Additional Links -->
+                        <div class="additional-links">
+                            <h:outputLink value="adminlogin.jsf">
+                                Are you a admin? Click here to login
+                            </h:outputLink>
+                            <h:outputLink value="index.jsf">
+                                Are you an student? Click here to login
+                            </h:outputLink>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </h:form>
+</body>
+</html>

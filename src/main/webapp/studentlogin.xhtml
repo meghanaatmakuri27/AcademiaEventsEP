@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h3 align="center"><u>Student Login</u></h3>
+
+<body> 
+<center>
+<h:form>
+ <h:panelGrid columns="3" cellpadding="5">
+
+<h:outputLabel for="email" value="Enter Email" />
+<h:inputText id="email" validatorMessage="email is must" value="#{studentbean.email}" />
+<h:message for="email"/>
+
+<h:outputLabel for="password" value="Enter Password"/>
+<h:inputText id="password" validatorMessage="Password is must" value="#{studentbean.password}"/>
+<h:message for="password"/>
+
+
+<h:outputLabel for="login"/>
+<h:commandButton id="login" value="login" action="#{studentbean.login()}" />
+<h:message for="login"/> 
+
+</h:panelGrid>
+</h:form>
+</center>
+</body> 
+</html>

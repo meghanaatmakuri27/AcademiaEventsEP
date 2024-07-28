@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/contact_us.css" />
+</h:head>
+<h:body>
+<ui:include src="navbar.xhtml"/>
+    <div class="contact_us_2">
+        <div class="responsive-container-block big-container">
+            <div class="blueBG"></div>
+            <div class="responsive-container-block container">
+                <h:form class="form-box">
+                    <div class="container-block form-wrapper">
+                        <h:panelGroup>
+                            <p class="text-blk contactus-head">
+                                Get in Touch
+                            </p>
+                            <p class="text-blk contactus-subhead">
+                             Have any query?
+                            </p>
+                        </h:panelGroup>
+                        <div class="responsive-container-block">
+                            <div class="responsive-cell-block wk-ipadp-6 wk-tab-12 wk-mobile-12 wk-desk-6">
+                                <p class="text-blk input-title">
+                                     NAME
+                                </p>
+                                <h:inputText id="firstName" value="#{contactBean.firstName}" placeholder="Please enter first name..." class="input" required="true"/>
+                            </div>
+                            <div class="responsive-cell-block wk-ipadp-6 wk-tab-12 wk-mobile-12 wk-desk-6">
+                                <p class="text-blk input-title">
+                                     BRANCH AND YEAR
+                                </p>
+                                <h:inputText id="branchandyear" value="#{contactBean.branchandyear}" placeholder="Please enter first name..." class="input" required="true"/>
+                            </div>
+                            <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
+                                <p class="text-blk input-title">
+                                    EMAIL
+                                </p>
+                                <h:inputText id="email" value="#{contactBean.email}" placeholder="Please enter email..." class="input" required="true"/>
+                            </div>
+                            <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
+                                <p class="text-blk input-title">
+                                    PHONE NUMBER
+                                </p>
+                                <h:inputText id="phoneNumber" value="#{contactBean.phoneNumber}" placeholder="Please enter phone number..." class="input" required="true"/>
+                            </div>
+                            <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12">
+                                <p class="text-blk input-title">
+                                    WHAT DO YOU HAVE IN MIND
+                                </p>
+                                <h:inputTextarea id="message" value="#{contactBean.message}" placeholder="Please enter query..." class="textinput" rows="10" required="true"/>
+                            </div>
+                        </div>
+                        <h:commandButton value="Submit" action="#{contactBean.submit}" class="submit-btn"/>
+                    </div>
+                    <div class="social-media-links">
+                        <a href="#" id="twitter-link">
+                            <img class="link-img" src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-twitter.png" alt="Twitter"/>
+                        </a>
+                        <a href="#" id="facebook-link">
+                            <img class="link-img" src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-facebook.png" alt="Facebook"/>
+                        </a>
+                        <a href="#" id="google-link">
+                            <img class="link-img" src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-google.png" alt="Google"/>
+                        </a>
+                        <a href="#" id="instagram-link">
+                            <img class="link-img" src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-instagram.png" alt="Instagram"/>
+                        </a>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </div>
+ 
+</h:body>
+</html>

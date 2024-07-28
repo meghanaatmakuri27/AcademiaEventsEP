@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>Event Speakers</title>
+    <h:outputStylesheet name="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <style>
+        .page-speakers {
+            background: linear-gradient(to right, #e0f7fa, #e1bee7);
+            padding: 40px;
+            font-family: "Varela Round", sans-serif;
+        }
+        .speakers-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .speaker-block {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+            flex: 1 1 calc(33.333% - 40px);
+            box-sizing: border-box;
+        }
+        .speaker-block img {
+            border-radius: 8px;
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+        }
+        .speaker-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .speaker-title {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        @media (max-width: 768px) {
+            .speaker-block {
+                flex: 1 1 calc(50% - 40px);
+            }
+        }
+        @media (max-width: 480px) {
+            .speaker-block {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</h:head>
+<h:body>
+    <ui:include src="navbar.xhtml"/>
+    <div class="page-speakers">
+        <h2 align="center">Team</h2>
+        <div class="speakers-container">
+            <div class="speaker-block">
+                <img src="resources/mypic4.jpg" alt="Speaker 1"/>
+                <div class="speaker-name">Meghana Atmakuri</div>
+                <div class="speaker-title">FullStack Developer</div>
+            </div>
+            <div class="speaker-block">
+                <img src="resources/bhargavi.jpg" alt="Speaker 2"/>
+                <div class="speaker-name">Bhargavi DudduKuri</div>
+                <div class="speaker-title">Backend Developer</div>
+            </div>
+            <div class="speaker-block">
+                <img src="resources/poojitha.jpg" alt="Speaker 3"/>
+                <div class="speaker-name">Pujitha</div>
+                <div class="speaker-title">Frontend Developer</div>
+            </div>
+        </div>
+    </div>
+</h:body>
+</html>

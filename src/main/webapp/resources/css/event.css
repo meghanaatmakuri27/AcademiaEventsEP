@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+
+@font-face {
+  font-family: 'Telefon Black';
+  src: url('https://raw.githubusercontent.com/arnabmunshi/fontface/master/TelefonBlack/Telefon-Black.woff2') format('woff2'), url('https://raw.githubusercontent.com/arnabmunshi/fontface/master/TelefonBlack/Telefon-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+.page-event {
+  background-color: #212121;
+  padding-bottom: 40px;
+  font-family: "Varela Round", sans-serif;
+}
+
+.cover {
+  background-color: rgb(54, 53, 58);
+  height: 360px;
+  background-image: url('https://goo.gl/NA3iQP');
+  background-position: center center;
+  background-size: cover;
+}
+
+.cover .heading {
+  font-family: 'Telefon Black';
+  font-size: 243px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ccc;
+  transition: font-size 0.3s;
+}
+
+.cover .heading::first-letter {
+  color: #db2d8e;
+}
+
+.upcoming-sec {
+  padding: 5vh 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.upcoming-sec .heading {
+  font-size: 30px;
+  color: #fff;
+}
+
+.upcoming-event-list {
+  color: #ccc;
+}
+
+.event-block {
+  padding: 5vh 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.event-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.event-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 40px;
+}
+
+.event-image img {
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+}
+
+.event-details {
+  flex: 2;
+}
+
+.title {
+  font-size: 30px;
+  padding-bottom: 2vh;
+}
+
+.venue table td {
+  vertical-align: top;
+}
+
+.venue table td i {
+  color: #db2d8e;
+  padding-left: 3px;
+  padding-right: 10px;
+}
+
+.venue table td .dim-color a {
+  color: rgba(204, 204, 204, 0.30);
+}
+
+.time {
+  padding-bottom: 3vh;
+}
+
+.time table td {
+  vertical-align: top;
+}
+
+.time table td i {
+  color: #db2d8e;
+  padding-right: 10px;
+}
+
+.time table td .dim-color {
+  color: rgba(204, 204, 204, 0.30);
+}
+
+.description {
+  padding-bottom: 3vh;
+}
+
+.group-of-btn {
+  padding-top: 3vh;
+}
+
+.group-of-btn .book-ticket {
+  background-color: #3cbfaf;
+  color: #fff;
+  margin-bottom: 10px;
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.page-heading {
+  text-transform: uppercase;
+  color: #fff;
+  padding-bottom: 17px;
+  word-break: break-all;
+  padding: 10px;
+}
+
+.page-heading::first-letter {
+  color: #db2d8e;
+}
+
+@media (max-width: 991px) {
+  .event-content {
+    flex-direction: column;
+  }
+
+  .event-image {
+    padding-right: 0;
+  }
+}

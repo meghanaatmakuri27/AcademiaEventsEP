@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #000; /* Default text color */
+        }
+        .hero {
+            background: url('resources/background6.jpg') no-repeat center center/cover;
+            height: 400px;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.5em;
+            margin: 10px 0 0;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .feature {
+            background: #f4f4f4;
+            border-radius: 8px;
+            padding: 20px;
+            width: 30%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .feature h3 {
+            margin-top: 0;
+            color: #000; /* Blue color for feature headings */
+        }
+        .feature p {
+            font-size: 1em;
+            color: #555; /* Darker gray for feature text */
+        }
+        .events {
+            margin: 20px 0;
+        }
+        .events h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff; /* Blue color for section headings */
+        }
+        .event-cards-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .event-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* Gradient background */
+            color: #000000; /* Black text */
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            flex: 1 1 calc(33.333% - 40px);
+            box-sizing: border-box;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .event-card:hover {
+            transform: translateY(-5px); /* Slight lift effect on hover */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        .event-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.5em;
+            color: #007bff; /* Blue color for card headings */
+        }
+        .event-card p {
+            margin: 0;
+            color: #333; /* Darker text color for event details */
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1em;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .card {
+            background: #ffffff; /* White background for feature cards */
+            color: #000000; /* Black text */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        .card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .testimonials {
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .testimonial {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .testimonial img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+        .testimonial blockquote {
+            margin: 0;
+            font-style: italic;
+            color: #555;
+        }
+        .testimonial cite {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <ui:include src="navbar.xhtml"/>
+
+    <div class="hero">
+        <div>
+            <h1>Welcome to the University Event Management System</h1>
+            <p>Your one-stop solution for managing and participating in university events.</p>
+            <a href="#events" class="btn">Explore Events</a>
+        </div>
+    </div>
+
+    <section class="features">
+        <div class="feature">
+            <h3>Easy Event Registration</h3>
+            <p>Register for events quickly and easily. Stay up-to-date with upcoming events and important dates.</p>
+        </div>
+        <div class="feature">
+            <h3>Comprehensive Event Management</h3>
+            <p>Manage your events effortlessly, from scheduling to notifications. Perfect for faculty and administrators.</p>
+        </div>
+        <div class="feature">
+            <h3>Real-Time Notifications</h3>
+            <p>Receive real-time updates and notifications about events you’re interested in. Never miss an important event.</p>
+        </div>
+    </section>
+
+    <section id="events" class="events">
+        <h2>Upcoming Events</h2>
+        <div class="event-cards-container">
+            <div class="event-card">
+                <h3>Annual Science Fair</h3>
+                <p>Date: August 15, 2024</p>
+                <p>Location: Main Auditorium</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+            <div class="event-card">
+                <h3>Freshman Orientation</h3>
+                <p>Date: September 1, 2024</p>
+                <p>Location: Campus Center</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+            <div class="event-card">
+                <h3>Career Fair</h3>
+                <p>Date: October 10, 2024</p>
+                <p>Location: Conference Hall</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Users Are Saying</h2>
+        <div class="testimonial">
+            <img src="resources/user1.jpg" alt="User 1" />
+            <div>
+                <blockquote>"The University Event Management System has revolutionized the way we handle events. It's incredibly user-friendly and efficient!"</blockquote>
+                <cite>- Sarah Johnson, Student</cite>
+            </div>
+        </div>
+        <div class="testimonial">
+            <img src="resources/user2.jpg" alt="User 2" />
+            <div>
+                <blockquote>"As a faculty member, I find this system indispensable for managing my department's events. Highly recommended!"</blockquote>
+                <cite>- Dr. Michael Smith, Faculty</cite>
+            </div>
+        </div>
+        <div class="testimonial">
+            <img src="resources/user3.jpg" alt="User 3" />
+            <div>
+                <blockquote>"The real-time notifications and easy registration process have made event management so much smoother for everyone involved."</blockquote>
+                <cite>- Emily Davis, Administrator</cite>
+            </div>
+        </div>
+    </section>
+</h:body>
+</html>

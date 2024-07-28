@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/layout2.xhtml">
+    <ui:define name="title">Add Event</ui:define>
+    <ui:define name="content">
+        <section class="section">
+            <div class="section-overlay">
+                <div class="form-container">
+                    <h3>Add Event</h3>
+                    <h:form enctype="multipart/form-data">
+                        <h:messages globalOnly="true" style="color: red; margin-bottom: 20px;" />
+                        
+                        <div class="form-group">
+                            <label for="eventName">Event Name</label>
+                            <h:inputText id="eventName" required="true" requiredMessage="Event name is mandatory" value="#{eventbean.name}" />
+                            <h:message for="eventName" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventDescription">Event Description</label>
+                            <h:inputTextarea id="eventDescription" rows="3" required="true" requiredMessage="Event description is mandatory" value="#{eventbean.description}" />
+                            <h:message for="eventDescription" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventCategory">Event Category</label>
+                            <h:inputText id="eventCategory" required="true" requiredMessage="Event category is mandatory" value="#{eventbean.category}" />
+                            <h:message for="eventCategory" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventDate">Event Date</label>
+                            <h:inputText id="eventDate" type="date" required="true" requiredMessage="Event date is mandatory" value="#{eventbean.date}" />
+                            <h:message for="eventDate" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventTime">Event Time</label>
+                            <h:inputText id="eventTime" type="time" required="true" requiredMessage="Event time is mandatory" value="#{eventbean.time}" />
+                            <h:message for="eventTime" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="eventImage">Upload Image</label>
+                            <h:inputFile id="eventImage" class="form-control-file" value="#{eventbean.eventImage}" />
+                            <h:message for="eventImage" />
+                        </div>
+
+                        <div class="form-group">
+                            <h:commandButton value="Submit" action="#{eventbean.add()}" class="btn btn-primary" />
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>
+</html>
